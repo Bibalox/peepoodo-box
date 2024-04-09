@@ -5,14 +5,16 @@ import type { Sound } from 'src/soundList'
 const props = defineProps<Sound>()
 
 const playing = ref(false)
+const soundDuration = ref(0)
 const sound = new Audio(`/sounds/${props.url}.mp3`)
 
 const manageClick = () => {
   if (sound.paused) {
     playing.value = true
-    sound.currentTime=0
+    sound.currentTime = 0
     sound.play()
-    sound.addEventListener('ended', () => playing.value = false)
+    soundDuration.value = sound.duration + .2
+    sound.addEventListener('ended', () => setTimeout(() => playing.value = false, .200))
   } else {
     playing.value = false
     sound.pause()
@@ -22,17 +24,22 @@ const manageClick = () => {
 
 <template>
   <button
-    :class="[
-      'sound-button',
-      `sound-button--${props.color}`,
-      { 'sound-button--playing': playing }
-    ]"
+    :class="`sound-button sound-button--${props.color}`" :style="`--duration: ${soundDuration}s`"
     @click="manageClick()"
   >
     <div class="sound-button__wrapper">
       <span class="sound-button__label" v-text="props.label" />
-      <img class="sound-button__icon sound-button__icon--play" src="/icons/play.svg" />
-      <img class="sound-button__icon sound-button__icon--stop" src="/icons/stop.svg" />
+      <img
+        v-if="playing"
+        class="sound-button__icon sound-button__icon--stop"
+        src="/icons/stop.svg"
+      />
+      <img
+        v-else
+        class="sound-button__icon sound-button__icon--play"
+        src="/icons/play.svg"
+      />
+      <div :class="['sound-button__progress-bar', {'sound-button__progress-bar--playing': playing}]" />
     </div>
   </button>
 </template>
@@ -116,17 +123,27 @@ const manageClick = () => {
     }
   }
 
-  &__icon--stop {
-    display: none;
+  &__label, &__icon {
+    z-index: 20;
   }
 
-  &--playing &__icon--play {
-    display: none;
-  }
+  &__progress-bar {
+    background-color: rgba(0, 0, 0, .03);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: 0;
+    width: 100%;
+    z-index: 10;
 
-  &--playing &__icon--stop {
-    display: block;
-  }
+    &--playing {
+      animation: progress var(--duration) linear;
 
+      @keyframes progress {
+        to {transform: scaleX(1);}
+      }
+    }
+  }
 }
 </style>
