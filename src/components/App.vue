@@ -96,8 +96,8 @@ body {
 
     @include small-screen {
       border-radius: 26px;
-      gap: 20px;
-      padding: 24px;
+      gap: 16px;
+      padding: 16px;
     }
   }
 }
