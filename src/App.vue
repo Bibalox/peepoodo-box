@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import SoundButton from '@components/SoundButton.vue'
+import { soundList } from '@assets/soundList.ts'
 </script>
 
 <template>
@@ -7,6 +9,11 @@
     <img src="/logo/logo-square.svg" class="app-logo app-logo--square" />
   </header>
   <div class="button-grid">
+    <sound-button
+      v-for="sound in soundList" :key="sound.url"
+      :url="sound.url" :label="sound.label"
+      :color="sound.color"
+    />
   </div>
 </template>
 
