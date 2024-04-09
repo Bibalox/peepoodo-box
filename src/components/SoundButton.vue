@@ -30,6 +30,7 @@ const manageClick = () => {
   border: none;
   background-color: transparent;
   border-radius: 14px;
+  box-shadow: 0 6px 0 0 var(--third);
   box-sizing: border-box;
   color: #2D0000;
   cursor: pointer;
@@ -41,29 +42,38 @@ const manageClick = () => {
   margin: 0;
   min-width: 280px;
   padding: 0;
+  transition: box-shadow .2s;
+
+  &:hover {
+    box-shadow: 0 5px 0 0 var(--third);
+  }
+
+  &:active {
+    box-shadow: 0 1px 0 0 var(--third);
+  }
 
   &--pink {
     --primary: #FFC5C5;
     --secondary: #FF8E8E;
-    --third: #;
+    --third: rgba(255, 142, 142, .15);
   }
 
   &--yellow {
     --primary: #FFE59F;
     --secondary: #FFC52D;
-    --third: #;
+    --third: rgba(255, 197, 45, .2);
   }
 
   &--blue {
     --primary: #A0E2F1;
     --secondary: #5F8CB8;
-    --third: #;
+    --third: rgba(95, 140, 184, .15);
   }
 
   &--brown {
     --primary: #D5C1B2;
     --secondary: #765B47;
-    --third: #;
+    --third: rgba(154, 129, 111, .15);
   }
 
   &__content {
@@ -79,13 +89,13 @@ const manageClick = () => {
     transition: all .2s;
 
     &:hover {
-      box-shadow: 0 4px 0 0 var(--secondary);
-      transform: translateY(4px);
+      box-shadow: 0 6px 0 0 var(--secondary);
+      transform: translateY(2px);
     }
 
     &:active {
-      box-shadow: 0 0 0 0 var(--secondary);
-      transform: translateY(8px);
+      box-shadow: 0 2px 0 0 var(--secondary);
+      transform: translateY(6px);
     }
   }
 }
