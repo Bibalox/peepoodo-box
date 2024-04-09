@@ -1,24 +1,38 @@
 <script setup lang="ts">
-import type { Sound } from '@assets/soundList'
+import { ref } from 'vue'
+import type { Sound } from 'src/soundList'
 
 const props = defineProps<Sound>()
 
+const playing = ref(false)
 const sound = new Audio(`/sounds/${props.url}.mp3`)
 
 const manageClick = () => {
   if (sound.paused) {
+    playing.value = true
     sound.currentTime=0
     sound.play()
+    sound.addEventListener('ended', () => playing.value = false)
   } else {
+    playing.value = false
     sound.pause()
   }
 }
 </script>
 
 <template>
-  <button :class="`sound-button sound-button--${props.color}`" @click="manageClick()">
-    <div class="sound-button__content">
+  <button
+    :class="[
+      'sound-button',
+      `sound-button--${props.color}`,
+      { 'sound-button--playing': playing }
+    ]"
+    @click="manageClick()"
+  >
+    <div class="sound-button__wrapper">
       <span class="sound-button__label" v-text="props.label" />
+      <img class="sound-button__icon sound-button__icon--play" src="/icons/play.svg" />
+      <img class="sound-button__icon sound-button__icon--stop" src="/icons/stop.svg" />
     </div>
   </button>
 </template>
@@ -76,7 +90,7 @@ const manageClick = () => {
     --third: rgba(154, 129, 111, .15);
   }
 
-  &__content {
+  &__wrapper {
     align-items: center;
     background-color: var(--primary);
     border-radius: 14px;
@@ -85,7 +99,10 @@ const manageClick = () => {
     display: flex;
     flex: 1;
     height: 56px;
+    justify-content: space-between;
+    overflow: hidden;
     padding: 0 20px;
+    position: relative;
     transition: all .2s;
 
     &:hover {
@@ -98,5 +115,18 @@ const manageClick = () => {
       transform: translateY(6px);
     }
   }
+
+  &__icon--stop {
+    display: none;
+  }
+
+  &--playing &__icon--play {
+    display: none;
+  }
+
+  &--playing &__icon--stop {
+    display: block;
+  }
+
 }
 </style>
