@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import SoundButton from '@components/SoundButton.vue'
-import { soundList } from '@assets/soundList.ts'
+import SoundButton from './SoundButton.vue'
+import { soundList } from '../soundList.ts'
 </script>
 
 <template>

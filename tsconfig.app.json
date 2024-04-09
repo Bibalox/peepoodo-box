@@ -6,10 +6,6 @@
     "composite": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "allowImportingTsExtensions": true,
-    "baseUrl": ".",
-    "paths": {
-      "@components/*": ["./src/components/*"],
-      "@assets/*": ["./src/assets/*"]
-    }
+    "baseUrl": "."
   }
 }
