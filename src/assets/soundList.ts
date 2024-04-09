@@ -1,4 +1,4 @@
-interface Sound {
+export interface Sound {
   url: string
   label: string
   color: 'yellow' | 'pink' | 'brown' | 'blue'
@@ -24,5 +24,15 @@ export const soundList: Sound[] = [
     url: 'dechiqueter',
     label: 'Il faut le vouloir',
     color: 'brown'
+  },
+  {
+    url: 'enfant',
+    label: 'Un enfant roux !',
+    color: 'yellow'
+  },
+  {
+    url: 'fion',
+    label: 'Ca me fait penser a...',
+    color: 'pink'
   }
 ]
