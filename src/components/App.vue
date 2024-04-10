@@ -39,7 +39,7 @@ import { soundList } from '../soundList.ts'
 }
 
 html {
-  height: calc(100% + env(safe-area-inset-top) + env(safe-area-inset-bottom));
+  height: calc(100% + env(safe-area-inset-top));
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -49,17 +49,15 @@ body {
   margin: 0;
   overflow-y: auto;
   padding: 0;
+  padding: calc(env(safe-area-inset-top) + 64px) 48px 32px;
   position: relative;
-  height: 100%;
-  padding: calc(env(safe-area-inset-top) + 64px) 48px calc(env(safe-area-inset-bottom) + 56px);
-  width: 100%;
 
   @include medium-screen {
-    padding: calc(env(safe-area-inset-top) + 56px) 48px  calc(env(safe-area-inset-bottom) + 48px);
+    padding: calc(env(safe-area-inset-top) + 56px) 48px 32px;
   }
 
   @include small-screen {
-    padding: calc(env(safe-area-inset-top) + 48px) 16px  calc(env(safe-area-inset-bottom) + 16px);
+    padding: calc(env(safe-area-inset-top) + 48px) 16px 32px;
   }
 }
 
@@ -68,7 +66,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 48px;
-  height: 100%;
+
+  @include small-screen {
+    gap: 32px;
+  }
 
   &__logo {
     flex-shrink: 0;
