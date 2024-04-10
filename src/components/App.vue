@@ -27,31 +27,42 @@ import { soundList } from '../soundList.ts'
   @media (max-width: 960px) { @content; }
 }
 
+:root {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+
+html {
+  height: 100dvh;
+}
+
 body {
-  background: center / cover no-repeat url('/app-background.jpg'), #ABDDFF;
+  background-color: #ABDDFF;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  height: 100dvh;
+  position: fixed;
+  height: 100%;
+  width: 100%;
 }
 
 .app {
   align-items: center;
+  background: center / cover no-repeat url('/app-background.jpg');
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 56px;
   height: 100%;
   overflow-y: auto;
-  padding: 64px 48px 56px;
+  padding: calc(env(safe-area-inset-top) + 64px) 48px 56px;
 
   @include medium-screen {
     gap: 48px;
-    padding: 56px 48px 48px;
+    padding: calc(env(safe-area-inset-top) + 56px) 48px 48px;
   }
 
   @include small-screen {
-    padding: 48px 16px 16px;
+    padding: calc(env(safe-area-inset-top) + 48px) 16px 16px;
   }
 
   &__logo {
