@@ -126,7 +126,7 @@ body {
       text-align: center;
       text-transform: uppercase;
       text-wrap: balance;
-      margin:  4px 16px;
+      margin:  4px 8px;
     }
 
     a:visited, a:link {
