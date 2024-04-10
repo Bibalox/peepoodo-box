@@ -30,6 +30,7 @@ import { soundList } from '../soundList.ts'
 :root {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
+  user-select: none;
 }
 
 html {
