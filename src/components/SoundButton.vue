@@ -85,9 +85,9 @@ sound.addEventListener('ended', () => soundPlaying.value = false)
   margin: 0;
   min-width: 280px;
   padding: 0;
+  transition: box-shadow .2s;
 
   @media (hover: hover) {
-    transition: box-shadow .2s;
 
     &:hover {
       box-shadow: 0 5px 0 0 var(--third);
@@ -99,7 +99,6 @@ sound.addEventListener('ended', () => soundPlaying.value = false)
   }
 
   @media (hover: none) {
-    transition: box-shadow .1s;
 
     &--pressed {
       box-shadow: 0 1px 0 0 var(--third);
@@ -149,9 +148,9 @@ sound.addEventListener('ended', () => soundPlaying.value = false)
     overflow: hidden;
     padding: 0 20px;
     position: relative;
+    transition: all .2s;
 
     @media (hover: hover) {
-      transition: all .2s;
 
       &:hover {
         box-shadow: 0 6px 0 0 var(--secondary);
@@ -162,10 +161,6 @@ sound.addEventListener('ended', () => soundPlaying.value = false)
         box-shadow: 0 2px 0 0 var(--secondary);
         transform: translateY(6px);
       }
-    }
-
-    @media (hover: none) {
-      transition: all .1s;
     }
   }
 
