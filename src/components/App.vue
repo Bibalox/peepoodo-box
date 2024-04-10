@@ -15,9 +15,13 @@ import { soundList } from '../soundList.ts'
       :color="sound.color"
     />
   </main>
+  <footer class="app__footer">
+    <p>Concu avec amour par <a href="https://www.jbbal.fr" target="_blank">JB Bal</a> en 2024, selon l'oeuvre originale de <a href="https://www.bobbypills.com" target="_blank">Bobbypills</a></p>
+  </footer>
 </template>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
 
 @mixin small-screen {
   @media (max-width: 680px) { @content; }
@@ -34,7 +38,7 @@ import { soundList } from '../soundList.ts'
 }
 
 html {
-  height: calc(100% + env(safe-area-inset-top));
+  height: calc(100% + env(safe-area-inset-top) + env(safe-area-inset-bottom));
 }
 
 body {
@@ -55,15 +59,15 @@ body {
   gap: 56px;
   height: 100%;
   overflow-y: auto;
-  padding: calc(env(safe-area-inset-top) + 64px) 48px 56px;
+  padding: calc(env(safe-area-inset-top) + 64px) 48px calc(env(safe-area-inset-bottom) + 56px);
 
   @include medium-screen {
     gap: 48px;
-    padding: calc(env(safe-area-inset-top) + 56px) 48px 48px;
+    padding: calc(env(safe-area-inset-top) + 56px) 48px  calc(env(safe-area-inset-bottom) + 48px);
   }
 
   @include small-screen {
-    padding: calc(env(safe-area-inset-top) + 48px) 16px 16px;
+    padding: calc(env(safe-area-inset-top) + 48px) 16px  calc(env(safe-area-inset-bottom) + 16px);
   }
 
   &__logo {
@@ -112,6 +116,22 @@ body {
       padding: 16px;
     }
   }
-}
 
+  &__footer {
+    color: #2D0000;
+    font-family: "Nanum Pen Script", cursive;
+    font-size: 22px;
+
+    p {
+      text-align: center;
+      text-transform: uppercase;
+      text-wrap: balance;
+      margin:  4px 16px;
+    }
+
+    a:visited, a:link {
+      color: inherit;
+    }
+  }
+}
 </style>

@@ -45,8 +45,6 @@ const manageClick = () => {
 </template>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
-
 .sound-button {
   border: none;
   background-color: transparent;
@@ -105,6 +103,7 @@ const manageClick = () => {
     box-sizing: border-box;
     display: flex;
     flex: 1;
+    gap: 20px;
     height: 56px;
     justify-content: space-between;
     overflow: hidden;
@@ -121,6 +120,12 @@ const manageClick = () => {
       box-shadow: 0 2px 0 0 var(--secondary);
       transform: translateY(6px);
     }
+  }
+
+  &__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &__label, &__icon {
