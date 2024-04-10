@@ -39,6 +39,7 @@ import { soundList } from '../soundList.ts'
 
 html {
   height: calc(100% + env(safe-area-inset-top) + env(safe-area-inset-bottom));
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -56,13 +57,12 @@ body {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 56px;
+  gap: 48px;
   height: 100%;
   overflow-y: auto;
   padding: calc(env(safe-area-inset-top) + 64px) 48px calc(env(safe-area-inset-bottom) + 56px);
 
   @include medium-screen {
-    gap: 48px;
     padding: calc(env(safe-area-inset-top) + 56px) 48px  calc(env(safe-area-inset-bottom) + 48px);
   }
 
