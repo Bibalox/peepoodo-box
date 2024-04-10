@@ -34,7 +34,7 @@ import { soundList } from '../soundList.ts'
 }
 
 html {
-  height: 100dvh;
+  height: calc(100% + env(safe-area-inset-top));
 }
 
 body {
@@ -48,7 +48,7 @@ body {
 
 .app {
   align-items: center;
-  background: center / cover no-repeat url('/app-background.jpg');
+  background: center / cover no-repeat url('/images/app-background.jpg');
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
