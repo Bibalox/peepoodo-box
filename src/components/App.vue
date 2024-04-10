@@ -28,7 +28,7 @@ import { soundList } from '../soundList.ts'
 }
 
 body {
-  background: center / cover no-repeat url('/background.jpg'), #ABDDFF;
+  background: center / cover no-repeat url('/app-background.jpg'), #ABDDFF;
   margin: 0;
   padding: 0;
   overflow: hidden;
